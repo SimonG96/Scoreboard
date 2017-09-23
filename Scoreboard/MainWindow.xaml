@@ -1,0 +1,52 @@
+﻿<Window x:Class="Scoreboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scoreboard"
+        xmlns:viewModel="clr-namespace:Scoreboard.ViewModel"
+        mc:Ignorable="d"
+        Title="Scoreboard"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.Column="0" Fill="#000000" HorizontalAlignment="Stretch" Stroke="Black" VerticalAlignment="Stretch"/>
+
+        <GridSplitter x:Name="gridSplitterLeft" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="5" Background="Black" ShowsPreview="True" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" IsEnabled="{Binding AreGridSplittersEnabled}"/>
+
+        <Label x:Name="lbNameLeft"  Grid.Column="2" Content="{Binding NameLeft}" HorizontalAlignment="Right" Margin="0,101,618,0" VerticalAlignment="Top" FontSize="100"/>
+        <Label x:Name="lbScoreLeft" Grid.Column="2" Content="{Binding ScoreTextLeft}" HorizontalAlignment="Right" Margin="0,290,618,0" VerticalAlignment="Top" FontSize="200" RenderTransformOrigin="0.153,0.518"/>
+        <Button x:Name="btLeft" Grid.Column="2" Content="+" HorizontalAlignment="Right" Margin="0,679,675,0" VerticalAlignment="Top" Width="100" Height="100" FontSize="50" Command="{Binding AddPointsLeftCommand}"/>
+        <Label x:Name="lbNameRight" Grid.Column="2" Content="{Binding NameRight}" HorizontalAlignment="Right" Margin="0,101,100,0" VerticalAlignment="Top" FontSize="100"/>
+        <Label x:Name="lbScoreRight" Grid.Column="2" Content="{Binding ScoreTextRight}" HorizontalAlignment="Right" Margin="0,290,100,0" VerticalAlignment="Top" FontSize="200"/>
+        <Button x:Name="btRight" Grid.Column="2" Content="+" HorizontalAlignment="Right" Margin="0,679,146,0" VerticalAlignment="Top" Width="100" Height="100" FontSize="50" Command="{Binding AddPointsRightCommand}" RenderTransformOrigin="1.09,0.42"/>
+
+        <Button x:Name="btMenu" Grid.Column="4" Content="Menu" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="200" Height="50" FontSize="28" Command="{Binding ShowMenuCommand}"/>
+        <Button x:Name="btGridSplitters" Grid.Column="4" Content="{Binding ChangeEnableStateOfGridSplittersButtonText}" HorizontalAlignment="Left" Margin="20,70,0,0" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Command="{Binding ChangeEnableStateOfGridSplittersCommand}" Visibility="{Binding IsMenuVisible}"/>
+        <Button x:Name="btUndo" Grid.Column="4" Content="Undo" HorizontalAlignment="Left" Margin="20,130,0,0" VerticalAlignment="Top" Width="200" Height="50" FontSize="28" Command="{Binding UndoCommand}" Visibility="{Binding IsMenuVisible}"/>
+        <Button x:Name="btRedo" Grid.Column="4" Content="Redo" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top" Width="200" Height="50" FontSize="28" Command="{Binding RedoCommand}" Visibility="{Binding IsMenuVisible}"/>
+        <Button x:Name="btClear" Grid.Column="4" Content="Clear All" HorizontalAlignment="Left" Margin="20,250,0,0" VerticalAlignment="Top" Width="200" Height="50" FontSize="28" Command="{Binding ClearAllCommand}" Visibility="{Binding IsMenuVisible}"/>
+        <!--<Button x:Name="btSettings" Grid.Column="3" Content="Settings" HorizontalAlignment="Left" Margin="300,310,0,0" VerticalAlignment="Top" Width="200" Height="50" FontSize="28" Command="{Binding }" Visibility="{Binding IsMenuVisible}"/>-->
+        
+        <GridSplitter x:Name="gridSplitterRight" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="5" Background="LightGray" ShowsPreview="True" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" IsEnabled="{Binding AreGridSplittersEnabled}"/>
+
+        <Rectangle Grid.Column="5" Fill="#000000" HorizontalAlignment="Stretch" Stroke="Black" VerticalAlignment="Stretch"/>
+    </Grid>
+</Window>
