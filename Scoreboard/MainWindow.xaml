@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Scoreboard"
         xmlns:viewModel="clr-namespace:Scoreboard.ViewModel"
         mc:Ignorable="d"
-        Title="Scoreboard"
+        Title="Scoreboard" Height="1020" Width="1980"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Window.Resources>
