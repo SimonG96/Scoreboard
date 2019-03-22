@@ -10,8 +10,8 @@ namespace Scoreboard.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public static string DEFAULT_NAME_LEFT = "Amie";
-        public static string DEFAULT_NAME_RIGHT = "Dani";
+        public static string DEFAULT_NAME_LEFT = "Name_Left";
+        public static string DEFAULT_NAME_RIGHT = "Name_Right";
         public static int DEFAULT_STEP_LEFT = 3;
         public static int DEFAULT_STEP_RIGHT = 2;
 
